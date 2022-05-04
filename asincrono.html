@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Por favor, escriba en un color primario.</h1>
+    <h2>¿Recuerda cuáles eran?</h2>
+    <h3>Bueno, si necesita refrescar la memoria, </h3>
+    <h3>aquí se los dejo..... rojo, verde y azul.</h3>
+    <input type="text" name="input1" id="inputColors">
+    <p>Escríbalos aquí arriba, y veamos como cambia el color del fondo!!</p>
+
+    <script>
+
+        //Variables a utilizar para: Identificar el Input texto y Body de la página.
+        var inputColores = document.querySelector("#inputColors");
+
+        var cuerpoDoc = document.querySelector("body");
+
+        // Listener utilizado para invocar la función actualizar colores, en caso de que se haya escrito red, green o blue y presionado Enter.
+        inputColores.addEventListener("keypress", function () {
+            if ("Enter") {
+                switch (inputColores.value) {
+                    case 'rojo':
+                        actualizarColores('red');
+                        break;
+                    case 'verde':
+                        actualizarColores('green');
+                        break;
+                    case 'azul':
+                        actualizarColores('blue');
+                        break;
+                    default:
+                        actualizarColores('white');
+                        break;
+                }
+            }
+        })
+        // Listener utilizado para invocar la función actualizar colores, en caso de que se haya presionado BackSpace, regresando el fondo a blanco.
+        inputColores.addEventListener("keydown", function () {
+            if ("BackSpace") {
+                actualizarColores('white');
+            }
+        })
+        // Función empleada para cambiar el color de fondo
+        function actualizarColores(colorFondo) {
+            cuerpoDoc.style.backgroundColor = colorFondo;
+        }
+
+    </script>
+</body>
+
+</html>
